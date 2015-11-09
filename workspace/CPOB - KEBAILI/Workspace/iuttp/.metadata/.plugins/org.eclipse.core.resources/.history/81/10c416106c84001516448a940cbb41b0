@@ -1,0 +1,10 @@
+package iut.app;
+
+public class Snippet {
+	for (IApplicationLog i : filteredLogs){
+				if (i instanceof ApplicationErrorLog){
+					return filteredLogs;
+				}
+			}
+}
+
