@@ -10,8 +10,6 @@ import edu.iut.gui.widget.agenda.AgendaPanelFactory.ActiveView;
 import edu.iut.gui.widget.agenda.WeekPanel.WeekDayNames;
 
 public class DayPanel extends EventPanel {
-	
-	private static int day = 0 ; 
 
 	public DayPanel(ActiveView activeView,WeekDayNames weekDayNames) {
 		super(activeView);
@@ -39,7 +37,7 @@ public class DayPanel extends EventPanel {
 			break;
 		case MONTH_VIEW:
 			JPanel hour = new JPanel();
-			hour.add(new JLabel(++day + ""));
+			hour.add(new JLabel("H"));
 			this.add(hour);
 		
 		}
