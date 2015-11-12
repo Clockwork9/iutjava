@@ -1,0 +1,23 @@
+package iut.gui.listeners;
+
+import iut.app.IApplicationLogListener;
+
+public abstract class AbstractApplicationMessageDialog implements
+		IApplicationLogListener {
+
+	@Override
+	public void newMessage(String message) {
+	 /* TP1 : CODE A FOURNIR */
+	 this.showMessage();
+	}
+	
+	protected abstract void showMessage();
+
+	protected void showMessage(String level, String message) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	/* TP1 ajouter une méthode abstraite showMessage */
+
+}
