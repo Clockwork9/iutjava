@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="iut.app.IApplicationLog"/>
-<fullyQualifiedTypeName name="edu.iut.app.AbstractApplicationLog"/>
-<fullyQualifiedTypeName name="edu.iut.app.IApplicationLog"/>
-<fullyQualifiedTypeName name="edu.iut.gui.widget.agenda.AgendaPanelFactory.ActiveView"/>
-<fullyQualifiedTypeName name="edu.iut.gui.widget.agenda.ControlAgendaViewPanel"/>
-</qualifiedTypeNameHistroy>
