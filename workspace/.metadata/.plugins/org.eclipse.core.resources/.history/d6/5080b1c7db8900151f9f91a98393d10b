@@ -1,0 +1,32 @@
+package edu.iut.tests;
+
+import static org.junit.Assert.*;
+
+import org.junit.BeforeClass;
+import org.junit.Before;
+import org.junit.Test;
+
+import edu.iut.app.ApplicationErrorLog;
+
+public class ApplicationErrorLogTest {
+	
+	private ApplicationErrorLog ael; 
+	
+	@BeforeClass
+	public static void setUpBeforeClass() {
+		System.err.println("ApplicationErrorLogTest") ; 
+	}
+	
+	@Before
+	public void setUp() {
+		System.err.println("Object creation") ; 
+		ael = new ApplicationErrorLog() ; 		
+	}
+
+	@Test
+	public void setMessageTest() {
+		System.err.println("setMessageTest") ; 
+		ael.setMessage("setMessageTest") ; 
+	}
+
+}

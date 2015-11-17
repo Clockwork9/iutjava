@@ -1,0 +1,5 @@
+package edu.iut.tests;
+
+public @interface BeforeTest {
+
+}

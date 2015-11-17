@@ -1,0 +1,23 @@
+package edu.iut.tests;
+
+import org.junit.BeforeClass;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.After;
+import org.junit.AfterClass;
+
+public class ApplicationErrorLogTest {
+	
+	@BeforeClass
+	public static void setUpBeforeClass() {
+		System.err.println("ApplicationErrorLogTest") ;   
+	}
+	
+	@Before
+	public static void setUp() {
+		
+	}
+	
+	@Test
+	
+}
