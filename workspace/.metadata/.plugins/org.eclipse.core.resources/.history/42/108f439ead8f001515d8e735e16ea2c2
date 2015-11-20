@@ -1,0 +1,51 @@
+package edu.iut.tests;
+
+import static org.junit.Assert.*;
+
+import java.util.Locale;
+
+import org.junit.BeforeClass;
+import org.junit.Before;
+import org.junit.Test;
+
+import edu.iut.app.ApplicationSession;
+
+public class ApplicationSessionTest {
+
+	private static ApplicationSession as; 
+	
+	@BeforeClass
+	public static void setUpBeforeClass() {
+		System.err.println("ApplicationSessionTest") ; 
+	}
+	
+	@Before
+	public void setUp() {
+		System.err.println("Object creation") ; 
+		as = new ApplicationSession() ; 
+		System.err.println("Object created without issue") ; 
+	}
+
+	@Test
+	public void setLocaleTest() {
+		System.err.println("setLocaleTest Default") ; 
+		System.err.println(ApplicationSession.instance().getString("monday") + ApplicationSession.instance().getString("mon")) ; 
+		System.err.println(ApplicationSession.instance().getString("tuesday") + ApplicationSession.instance().getString("tue")) ; 
+		System.err.println(ApplicationSession.instance().getString("wednesday") + ApplicationSession.instance().getString("wed")) ; 
+		System.err.println(ApplicationSession.instance().getString("thursday") + ApplicationSession.instance().getString("thu")) ; 
+		System.err.println(ApplicationSession.instance().getString("friday") + ApplicationSession.instance().getString("fri")) ; 
+		System.err.println(ApplicationSession.instance().getString("saturday") + ApplicationSession.instance().getString("sat")) ; 
+		System.err.println(ApplicationSession.instance().getString("sunday") + ApplicationSession.instance().getString("sun")) ; 
+		
+		System.err.println("setLocaleTest France") ; 
+		as.setLocale(Locale.FRANCE) ; 
+		System.err.println(ApplicationSession.instance().getString("monday") + ApplicationSession.instance().getString("mon")) ; 
+		System.err.println(ApplicationSession.instance().getString("tuesday") + ApplicationSession.instance().getString("tue")) ; 
+		System.err.println(ApplicationSession.instance().getString("wednesday") + ApplicationSession.instance().getString("wed")) ; 
+		System.err.println(ApplicationSession.instance().getString("thursday") + ApplicationSession.instance().getString("thu")) ; 
+		System.err.println(ApplicationSession.instance().getString("friday") + ApplicationSession.instance().getString("fri")) ; 
+		System.err.println(ApplicationSession.instance().getString("saturday") + ApplicationSession.instance().getString("sat")) ; 
+		System.err.println(ApplicationSession.instance().getString("sunday") + ApplicationSession.instance().getString("sun")) ; 
+		System.err.println("setLocale used without issue") ; 
+	}
+}
