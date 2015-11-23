@@ -1,0 +1,15 @@
+package edu.iut.app;
+
+public class Option<cle extends Integer, val extends Integer, description extends String> {
+	
+	private int cle ; 
+	private int val ; 
+	private String description ; 
+	
+	public Option(int cle, int val, String description) {
+		this.cle = cle ; 
+		this.val = val ; 
+		this.description = description ; 
+	}
+
+}

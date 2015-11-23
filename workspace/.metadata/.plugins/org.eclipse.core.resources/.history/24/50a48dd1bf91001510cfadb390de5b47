@@ -1,0 +1,9 @@
+package edu.iut.app;
+
+public class Option<cle extends Number, val extends Number, description extends String> {
+	
+	public Option(int cle, int val, String description) {
+		
+	}
+
+}
