@@ -20,6 +20,12 @@ public class CommandLineOption<ValueType> {
 			return optionType;
 		}		
 	}
+
+	protected String key;
+	protected String description;
+	protected ValueType defaultValue;
+	protected ValueType value;
+	protected OptionType optionType;
 	
 	public CommandLineOption() {		
 		this.key = null ; 
@@ -61,12 +67,6 @@ public class CommandLineOption<ValueType> {
 	public OptionType getOptionType() {
 		return optionType;
 	}
-
-	protected String key;
-	protected String description;
-	protected ValueType defaultValue;
-	protected ValueType value;
-	protected OptionType optionType;
 	
 
 }

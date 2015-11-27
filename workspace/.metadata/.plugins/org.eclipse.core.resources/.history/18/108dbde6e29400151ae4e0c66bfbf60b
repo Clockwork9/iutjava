@@ -1,0 +1,14 @@
+package edu.iut.app;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+public class CriteriaDate implements Criteria {
+
+	@Override
+	public ArrayList<Date> meetCriteria(ArrayList<?> dates) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

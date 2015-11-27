@@ -1,0 +1,10 @@
+package edu.iut.app;
+
+import java.util.ArrayList;
+
+public interface Criteria {
+
+	public ArrayList<Date> meetCriteria(ArrayList<Date> Dates) ; 
+	public ArrayList<Person> meetCriteria(ArrayList<Person> persons) ; 
+
+}

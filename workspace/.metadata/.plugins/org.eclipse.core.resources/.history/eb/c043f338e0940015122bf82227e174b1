@@ -1,0 +1,26 @@
+package edu.iut.app;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+public class CriteriaDate implements Criteria {
+
+	@Override
+	public ArrayList<Date> meetCriteriaDate(ArrayList<Date> dates) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Person> meetCriteriaPerson(ArrayList<Person> persons) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Classroom> meetCriteriaRoom(ArrayList<Classroom> rooms) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

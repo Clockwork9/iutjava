@@ -1,0 +1,20 @@
+package edu.iut.app;
+
+import java.util.ArrayList;
+
+public class CopyOfCriteriaClassroom implements Criteria {
+
+	@Override
+	public ArrayList<Classroom> meetCriteria(ArrayList<?> objects) {
+		// TODO Auto-generated method stub
+		ArrayList<Classroom>  = new ArrayList<>() ; 
+		
+		for (Object object : objects) {
+			if (object instanceof Classroom)
+				.add((Classroom) object) ; 
+		}
+		
+		return  ; 
+	}
+
+}
