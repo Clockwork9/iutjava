@@ -1,0 +1,25 @@
+package edu.iut.app;
+
+public class ApplicationWarningLog extends AbstractApplicationLog {
+
+	/*
+	 * Constructeur par défaut d'un ApplicationInfoLog. 
+	 */
+	public ApplicationWarningLog() {
+		super();
+	}
+	
+	/*
+	 * Remplace le message de ApplicationInfoLog par la chaîne passée en paramètre. La méthode fireMessage est ensuite appelée. 
+	 * 
+	 * @param	message	la chaîne de caractère qui remplacera le contenu de l'attribut message
+	 * @see edu.iut.app.AbstractApplicationLog#setMessage(java.lang.String)
+	 * @see	edu.iut.app.AbstractApplicationLog#fireMessage(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public void setMessage(String message) {
+		this.message = message;
+		ApplicationSession.instance().getGUILogger().warning(this.message);
+		super.fireMessage("[WARNING]", this.message);
+	}
+}

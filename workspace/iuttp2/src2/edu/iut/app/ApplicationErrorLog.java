@@ -2,10 +2,19 @@ package edu.iut.app;
 
 public class ApplicationErrorLog extends AbstractApplicationLog {
 
+	/**
+	 * Constructeur par défaut d'un ApplicationErrorLog. 
+	 */
 	public ApplicationErrorLog() {
 		super();
 	}
 	
+	/**
+	 * Remplace le message de ApplicationErrorLog par la chaîne passée en paramètre. La méthode fireMessage est ensuite appelée. 
+	 * 
+	 * @param	message	la chaîne de caractère qui remplacera le contenu de l'attribut message
+	 * @see edu.iut.app.AbstractApplicationLog#setMessage(java.lang.String)
+	 */
 	@Override
 	public void setMessage(String message) {
 		this.message = message;

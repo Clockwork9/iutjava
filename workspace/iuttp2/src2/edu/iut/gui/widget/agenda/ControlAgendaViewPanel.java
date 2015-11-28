@@ -13,6 +13,13 @@ public class ControlAgendaViewPanel extends JPanel {
 
 	CardLayout agendaViewLayout;
 	JPanel contentPane;
+	
+	/**
+	 * Permet à l'utilisateur de cliquer sur un bouton Next, permettant de changer l'affichage de l'application
+	 * 
+	 * @param	layerLayout	la disposition des éléments graphiques dans le panel
+	 * @param	contentPane	le panel à afficher
+	 */
 	public ControlAgendaViewPanel(CardLayout layerLayout, final JPanel contentPane) {
 		this.agendaViewLayout = layerLayout;
 		this.contentPane = contentPane;

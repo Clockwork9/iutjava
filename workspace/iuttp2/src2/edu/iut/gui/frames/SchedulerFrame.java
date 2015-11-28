@@ -15,6 +15,9 @@ import edu.iut.gui.widget.agenda.AgendaPanelFactory.ActiveView;
 
 public class SchedulerFrame extends JFrame {
 	
+	/**
+	 * Initialise l'interface graphique de l'application. 
+	 */
 	protected void setupUI() {
 		JPanel contentPane = new JPanel();
 		CardLayout layerLayout = new CardLayout();
@@ -31,6 +34,9 @@ public class SchedulerFrame extends JFrame {
 		layerLayout.next(contentPane);
 	}
 	
+	/**
+	 * Constructeur vide de SchedulerFrame. 
+	 */
 	public SchedulerFrame() {
 		super();
 		addWindowListener (new WindowAdapter(){
@@ -41,6 +47,10 @@ public class SchedulerFrame extends JFrame {
 		setupUI();
 
 	}
+	
+	/**
+	 * Constructeur par défaut de SchedulerFrame. 
+	 */
 	public SchedulerFrame(String title) {
 		super(title);
 		addWindowListener (new WindowAdapter(){

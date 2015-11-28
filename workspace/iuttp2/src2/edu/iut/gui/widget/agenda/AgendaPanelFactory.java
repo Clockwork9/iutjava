@@ -27,9 +27,17 @@ public class AgendaPanelFactory {
 		}		
 	}
 	
+	/**
+	 * Constructeur vide de la classe AgendaPanjelFactory. 
+	 */
 	public AgendaPanelFactory() {
 	}
 	
+	/**
+	 * Met à jour l'affichage de l'application en fonction de l'option d'affichage. 
+	 * 
+	 * @param	activeView	l'affichage choisi
+	 */
 	public JPanel getAgendaView(ActiveView activeView) {
 		JPanel agendaView = null;
 		switch (activeView) {
