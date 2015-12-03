@@ -12,6 +12,9 @@ public class ExamEvent {
 	protected Classroom classroom;
 	protected ArrayList<Document> documents;
 	
+	/**
+	 * Constructeur par défaut d'un ExamEvent. 
+	 */
 	public ExamEvent() {
 		this.examDate = null ; 
 		this.student = null ; 
@@ -20,6 +23,15 @@ public class ExamEvent {
 		this.documents = null ; 
 	}
 	
+	/**
+	 * Crée un objet ExamEvent dont les attributs sont initialisés par les variables passés en paramètre. 
+	 * 
+	 * @param	date	la date de l'examen
+	 * @param	person	l'étudiant
+	 * @param	jury	les membres du jury
+	 * @param	classRoom	la salle dans laquelle l'examen aura lieu
+	 * @param	document	les documents liés à cet examen
+	 */
 	public ExamEvent(Date date, Person person, ArrayList<Person> jury, Classroom classRoom, ArrayList<Document> document) {
 		this.examDate = date ; 
 		this.student = person ; 
@@ -28,22 +40,37 @@ public class ExamEvent {
 		this.documents = document ; 
 	}
 
+	/**
+	 * @return	la date de l'examen
+	 */
 	public Date getExamDate() {
 		return examDate;
 	}
 
+	/**
+	 * @return	l'étudiant dont l'examen concerne
+	 */
 	public Person getStudent() {
 		return student;
 	}
 
+	/**
+	 * @return	la liste des jurys qui seront présents à l'examen
+	 */
 	public ArrayList<Person> getJury() {
 		return jury;
 	}
 
+	/**
+	 * @return	la salle dans laquelle l'examen aura lieu
+	 */
 	public Classroom getClassroom() {
 		return classroom;
 	}
 
+	/**
+	 * @return	la liste des documents liés à l'examen
+	 */
 	public ArrayList<Document> getDocuments() {
 		return documents;
 	}

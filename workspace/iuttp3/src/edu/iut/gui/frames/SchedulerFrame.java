@@ -9,6 +9,7 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -18,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.KeyStroke;
 
+import edu.iut.app.ApplicationSession;
 import edu.iut.gui.widget.agenda.AgendaPanelFactory;
 import edu.iut.gui.widget.agenda.ControlAgendaViewPanel;
 import edu.iut.gui.widget.agenda.AgendaPanelFactory.ActiveView;
@@ -31,6 +33,9 @@ public class SchedulerFrame extends JFrame {
 	JPanel weekView;
 	JPanel monthView;
 	
+	/**
+	 * Initialise l'interface graphique de l'application. 
+	 */
 	protected void setupUI() {
 		
 		contentPane = new JPanel();
@@ -52,11 +57,12 @@ public class SchedulerFrame extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		
 		//MENU
-		JMenu file, edit, help;
+		JMenu file, edit, help, view;
 		
 		//ITEM DE MENU
-		JMenuItem menuItem, menuItem2, menuItem3, menuItem4;
-		JMenuItem menuItem5, menuItem6, menuItem7, menuItem8;
+		JMenuItem load, quit, save;
+		JMenuItem display, about;
+		JMenuItem month, week, day;
 		
 		/* File Menu */
 		/** EX4 : MENU : UTILISER L'AIDE FOURNIE DANS LE TP**/
@@ -72,20 +78,37 @@ public class SchedulerFrame extends JFrame {
 		
 
 		//a group of JMenuItems
-		menuItem = new JMenuItem("Load",KeyEvent.VK_T);
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
-		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
-		file.add(menuItem);
+		load = new JMenuItem("Load",KeyEvent.VK_T);
+		load.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
+		load.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
+		file.add(load);
 		
-		menuItem2 = new JMenuItem("quit",KeyEvent.VK_T);
-		menuItem2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
-		menuItem2.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
-		file.add(menuItem2);
+		quit = new JMenuItem("quit",KeyEvent.VK_T);
+		quit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
+		quit.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
+		file.add(quit);
 		
-		menuItem3 = new JMenuItem("Save",KeyEvent.VK_T);
-		menuItem3.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
-		menuItem3.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
-		file.add(menuItem3);
+		//LISTENER QUIT
+		quit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				//message box yes/no pour le bouton quitter
+				int dialogButton = JOptionPane.YES_NO_OPTION;
+				int dialogResult = JOptionPane.showConfirmDialog (null, "Voulez-vous quitter?","Warning",dialogButton);
+				if(dialogResult == JOptionPane.YES_OPTION){
+				System.exit(0);
+				}
+			}
+			
+		});
+		
+		save = new JMenuItem("Save",KeyEvent.VK_T);
+		save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
+		save.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
+		file.add(save);
 		
 		
 	//Menu Edit 
@@ -95,16 +118,80 @@ public class SchedulerFrame extends JFrame {
 		edit.setMnemonic(KeyEvent.VK_A);
 		edit.getAccessibleContext().setAccessibleDescription(
 		        "The only menu in this program that has menu items");
-		menuBar.add(edit);
 		
-		menuItem4 = new JMenuItem("View",KeyEvent.VK_T);
-		menuItem4.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
-		menuItem4.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
-		edit.add(menuItem4);
+		//Sous menu View
+		
+		view = new JMenu("View");
+		view.setMnemonic(KeyEvent.VK_A);
+		view.getAccessibleContext().setAccessibleDescription(
+		        "The only menu in this program that has menu items");
+		edit.add(view);
+		
+		month = new JMenuItem("Month",KeyEvent.VK_T);
+		month.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
+		month.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
+		view.add(month);
+				
+		week = new JMenuItem("Week",KeyEvent.VK_T);
+		week.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
+		week.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
+		view.add(week);
+		
+		day = new JMenuItem("Day",KeyEvent.VK_T);
+		day.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
+		day.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
+		view.add(day);
+		
+		//LISTENER VIEW
+		/**class SwitchView implements ActionListener {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				layerLayout.last(contentPane);	
+				
+			}
+			
+		}*/
+		
+		month.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				layerLayout.last(contentPane);	
+				
+			}
+			
+		});
+		
+		week.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				layerLayout.first(contentPane);	
+				layerLayout.next(contentPane);	
+				}
+			
+			
+		});
+		day.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				layerLayout.first(contentPane);	
+				
+			}
+			
+		});
 		
 		
 	//Menu Help
-		help = new JMenu("Edit");
+		help = new JMenu("Help");
 		
 		menuBar.add(help);
 		help.setMnemonic(KeyEvent.VK_A);
@@ -112,15 +199,15 @@ public class SchedulerFrame extends JFrame {
 		        "The only menu in this program that has menu items");
 		menuBar.add(help);
 		
-		menuItem5 = new JMenuItem("Display",KeyEvent.VK_T);
-		menuItem5.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
-		menuItem5.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
-		help.add(menuItem5);
+		display = new JMenuItem("Display",KeyEvent.VK_T);
+		display.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
+		display.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
+		help.add(display);
 		
-		menuItem6 = new JMenuItem("About",KeyEvent.VK_T);
-		menuItem6.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
-		menuItem6.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
-		help.add(menuItem6);
+		about = new JMenuItem("About",KeyEvent.VK_T);
+		about.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
+		about.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
+		help.add(about);
 		
 		
 
@@ -154,15 +241,14 @@ public class SchedulerFrame extends JFrame {
 		        "This menu does nothing");
 		menuBar.add(menu);*/
 
-
-		
-		
-		
 		this.setJMenuBar(menuBar);
 		this.pack();
 		layerLayout.next(contentPane);
 	}
 	
+	/**
+	 * Constructeur par défaut de SchedulerFrame
+	 */
 	public SchedulerFrame() {
 		super();
 		
@@ -179,6 +265,12 @@ public class SchedulerFrame extends JFrame {
 		setupUI();
 
 	}
+	
+	/**
+	 * Constructeur permettant de définir le titre de la fenêtre de l'application
+	 * 
+	 * @param	title	le titre de la fenêtre
+	 */
 	public SchedulerFrame(String title) {
 		super(title);
 		addWindowListener (new WindowAdapter(){

@@ -9,17 +9,30 @@ public class CommandLineParser {
 	protected HashMap<String, CommandLineOption<?>> options;
 	protected ArrayList<String> parseErrors;
 		
+	/**
+	 * Constructeur par défaut de CommandLineParser. 
+	 */
 	public CommandLineParser() {
 		options = new HashMap<String, CommandLineOption<?> >();
 		parseErrors = new ArrayList<String>();
 	}
 	
+	/**
+	 * Remplace l'option de CommandLineParser par l'option passée en paramètre si elle n'est pas nulle. 
+	 * 
+	 * @param option	l'option à ajouter
+	 */
 	public void addOption(CommandLineOption<?> option) {
 		if (option != null) {
 			options.put(option.getKey(),option);
 		}
 	}
 	
+	/**
+	 * Permet de lire l'expression régulière passée en paramètre et de définir l'action en fonction de l'expression. 
+	 * 
+	 * @param	args	la chaîne de caractère contenant l'expression régulière saisie
+	 */
 	public void parse(String[] args) {
 		for (String argument: args) {
 			String[] keyValue=argument.split("=");
@@ -87,6 +100,12 @@ public class CommandLineParser {
 		}
 	}
 	
+	/**
+	 * Retourne l'option de CommandLineParser s'il est du type passé en paramètre, rien sinon. 
+	 * 
+	 * @param 	key	le type que doit respecter l'option
+	 * @return	l'option
+	 */
 	public CommandLineOption<?> getOption(String key) {
 		if (options.containsKey(key)) {
 			return options.get(key);
@@ -94,6 +113,9 @@ public class CommandLineParser {
 		return null;
 	}
 	
+	/**
+	 * @return	une liste de chaînes contenant toutes les erreurs rencontrés lors de l'utilisation de la méthode parse()
+	 */
 	public ArrayList<String> getErrors() {
 		return parseErrors;
 	}

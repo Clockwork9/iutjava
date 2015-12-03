@@ -27,6 +27,9 @@ public class CommandLineOption<ValueType> {
 	protected ValueType value;
 	protected OptionType optionType;
 	
+	/**
+	 * Constructeur par défaut de CommandLineOption
+	 */
 	public CommandLineOption() {		
 		this.key = null ; 
 		this.description = null ; 
@@ -34,6 +37,10 @@ public class CommandLineOption<ValueType> {
 		this.value = null ; 
 		this.optionType = null ; 
 	}
+	
+	/**
+	 * Constructeur permettant d'initialiser les 5 attributs de la classe CommandLineOption
+	 */
 	public CommandLineOption(final OptionType optionType, final String key, final String description, final ValueType defaultValue) {
 		this.optionType = optionType ; 
 		this.key = key ; 
@@ -41,6 +48,15 @@ public class CommandLineOption<ValueType> {
 		this.defaultValue = defaultValue ; 
 		this.value = this.defaultValue ; 
 	}
+	
+	/**
+	 * Remplace les valeurs des variables de CommandLineOption par celles des variables passées en paramètre
+	 * 
+	 * @param	optionType	le nouveau type de CommandLineOption
+	 * @param	key	la nouvelle clé de CommandLineOption
+	 * @param	description	la nouvelle description de CommandLineOption
+	 * @param	defaultValue	la nouvelle valeur par défaut de CommandLineOption
+	 */
 	public void setOption(OptionType optionType, String key, String description, ValueType defaultValue) {
 		this.optionType = optionType ; 
 		this.key = key ; 

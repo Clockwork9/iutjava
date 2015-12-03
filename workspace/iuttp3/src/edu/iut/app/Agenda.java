@@ -4,10 +4,18 @@ import java.util.LinkedList;
 
 public class Agenda extends LinkedList<ExamEvent> {
 	
+	/**
+	 * Constructeur par défaut d'un Agenda. 
+	 */
 	public Agenda() {
-		
+		super();
 	}
 	
+	/**
+	 * Ajoute un ExamEvent à l'Agenda. 
+	 * 
+	 * @param	examEvent	 l'objet ExamEvent à ajouter
+	 */
 	public void addCheckedEvent(ExamEvent examEvent) {
 		this.add(examEvent);
 	}

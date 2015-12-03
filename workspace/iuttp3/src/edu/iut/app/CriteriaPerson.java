@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 public class CriteriaPerson implements Criteria {
 
+	/**
+	 * Retourne une liste de Personnes à partir d'une liste d'objets quelconques. 
+	 */
 	@Override
 	public ArrayList<Person> meetCriteria(ArrayList<?> objects) {
 		// TODO Auto-generated method stub

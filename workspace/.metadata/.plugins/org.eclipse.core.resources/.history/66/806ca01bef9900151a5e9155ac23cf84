@@ -1,0 +1,31 @@
+package edu.iut.app;
+
+public class Document {
+	
+	/**
+	 * Constructeur par défaut d'un Document. 
+	 */
+	public Document() {
+		documentURI="";
+	}
+	
+	/**
+	 * Constructeur permettant d'initialiser l'attribut documentURI de Doccument avec le nom d'un document passé en paramètre. 
+	 * 
+	 * @param	documentURI le nom du document	
+	 */
+	public Document(String documentURI) {
+		/* EX2 : Affectation */
+		this.documentURI = documentURI ; 
+	}
+	
+	
+	public void setDocumentURI(String number) {
+		this.documentURI = number;
+	}
+	public String getDocumentURI() {
+		return documentURI;
+	}
+	
+	protected String documentURI;
+}

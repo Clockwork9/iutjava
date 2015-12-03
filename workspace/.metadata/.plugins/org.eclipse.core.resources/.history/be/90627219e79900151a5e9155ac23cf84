@@ -1,0 +1,63 @@
+package edu.iut.gui.widget.agenda;
+
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JPanel;
+
+import edu.iut.app.ExamEvent;
+import edu.iut.app.Person;
+import edu.iut.app.Document;
+
+public class ExamEventPanel extends JPanel {
+	
+	private JLabel lDate = new JLabel("Date de soutenance : ") ; 
+	private JLabel lStudent = new JLabel("Étudiant : ") ; 
+	private JLabel lJurys = new JLabel("Membres du jury : "); 
+	private JLabel lClassroom = new JLabel("Salle de soutenance : ") ; 
+	private JLabel lDocuments = new JLabel("Documents : ") ; 
+	private JTextArea date ; 
+	private JTextArea student ; 
+	private JTextArea jurys ; 
+	private JTextArea classroom ; 
+	private JTextArea documents ; 
+	
+	public ExamEventPanel(ExamEvent event) {
+		this.date = new JTextArea(event.getExamDate().toString()) ; 
+		this.student = new JTextArea(event.getStudent().getFirstname() + " " + event.getStudent().getLastname()) ;
+		
+		String jurys = "" ; 
+		for (Person jury : event.getJury())
+			jurys += jury.getFirstname() + " " + jury.getLastname() + ", " ;
+		jurys = jurys.substring(0, jurys.length() - 2) ; 
+		this.jurys = new JTextArea(jurys) ; 
+		
+		this.classroom = new JTextArea(event.getClassroom().getClassRoomNumber()) ; 
+		
+		String documents = "" ; 
+		for (Document document : event.getDocuments())
+			documents += document.getDocumentURI() + ", " ; 
+		documents = documents.substring(0, documents.length() - 2) ; 
+		this.documents = new JTextArea(documents) ; 
+		
+		this.setLayout(new GridLayout(5,2)) ; 
+		this.add(new JPanel().add(this.lDate)) ; 
+		this.add(new JPanel().add(this.date)) ; 
+		this.add(new JPanel().add(this.lStudent)) ; 
+		this.add(new JPanel().add(this.student)) ; 
+		this.add(new JPanel().add(this.lJurys)) ; 
+		this.add(new JPanel().add(this.jurys)) ; 
+		this.add(new JPanel().add(this.lClassroom)) ; 
+		this.add(new JPanel().add(this.classroom)) ; 
+		this.add(new JPanel().add(this.lDocuments)) ; 
+		this.add(new JPanel().add(this.documents)) ; 
+		
+		JFrame soutenance = new JFrame("Détail soutenance") ; 
+		soutenance.add(this) ; 
+		soutenance.pack() ; 
+		soutenance.setVisible(true) ; 
+	}
+	
+}

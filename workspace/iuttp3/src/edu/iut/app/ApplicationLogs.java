@@ -5,9 +5,17 @@ import java.util.ArrayList;
 
 public class ApplicationLogs extends ArrayList<IApplicationLog> {
 
+	/**
+	 * Constructeur vide créant une liste de ApplicationLog. 
+	 */
 	public ApplicationLogs() {		
 	}
 	
+	/**
+	 * Retourne une liste filtrée de ApplicationLog, la liste de base étant la classe elle-même. 
+	 * 
+	 * @return	une liste ne contenant plus que des ApplicationErrorLog
+	 */
 	public ArrayList<IApplicationLog> getErrors() {
 		ArrayList<IApplicationLog> filteredLogs = new ArrayList<IApplicationLog>();
 		for (IApplicationLog a : this) {
@@ -17,6 +25,12 @@ public class ApplicationLogs extends ArrayList<IApplicationLog> {
 		}
 		return filteredLogs;
 	}
+	
+	/**
+	 * Retourne une liste filtrée de ApplicationLog, la liste de base étant la classe elle-même. 
+	 * 
+	 * @return	une liste ne contenant plus que des ApplicationWarningLog
+	 */
 	public ArrayList<IApplicationLog> getWarnings() {
 		ArrayList<IApplicationLog> filteredLogs = new ArrayList<IApplicationLog>();
 		for (IApplicationLog a : this) {
@@ -26,6 +40,12 @@ public class ApplicationLogs extends ArrayList<IApplicationLog> {
 		}
 		return filteredLogs;
 	}
+	
+	/**
+	 * Retourne une liste filtrée de ApplicationLog, la liste de base étant la classe elle-même. 
+	 * 
+	 * @return	une liste ne contenant plus que des ApplicationInfoLog
+	 */
 	public ArrayList<IApplicationLog> getInfos() {
 		ArrayList<IApplicationLog> filteredLogs = new ArrayList<IApplicationLog>();
 		for (IApplicationLog a : this) {

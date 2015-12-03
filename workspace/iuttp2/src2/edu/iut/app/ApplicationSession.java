@@ -59,7 +59,7 @@ public class ApplicationSession {
 		return sessionExceptionLogger;
 	}
 	
-	/*
+	/**
 	 * Remplace l'attribut locale de ApplicationSession par la variable locale passée en paramètre. 
 	 * 
 	 * @param	locale	variable par laquelle sera remplacée l'attribut locale

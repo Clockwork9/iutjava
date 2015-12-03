@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 public class CriteriaClassroom implements Criteria {
 
+	/**
+	 * Retourne une liste de Classrooms à partir d'une liste d'objets quelconques. 
+	 */
 	@Override
 	public ArrayList<Classroom> meetCriteria(ArrayList<?> objects) {
 		// TODO Auto-generated method stub

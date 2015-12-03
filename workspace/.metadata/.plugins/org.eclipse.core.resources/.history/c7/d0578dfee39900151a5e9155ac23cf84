@@ -1,0 +1,52 @@
+package edu.iut.gui.widget.agenda;
+
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import edu.iut.app.ExamEvent;
+import edu.iut.app.Person;
+import edu.iut.app.Document;
+
+public class ExamEventPanel extends JPanel {
+	
+	private JLabel date ; 
+	private JLabel student ; 
+	private JLabel jurys ; 
+	private JLabel classroom ; 
+	private JLabel documents ; 
+	
+	public ExamEventPanel(ExamEvent event) {
+		this.date = new JLabel("Date de soutenance : " + event.getExamDate().toString()) ; 
+		this.student = new JLabel("Étudiant : " + event.getStudent().getFirstname() + " " + event.getStudent().getLastname()) ;
+		
+		String jurys = "Membres du jury : " ; 
+		for (Person jury : event.getJury())
+			jurys += jury.getFirstname() + " " + jury.getLastname() + ", " ;
+		jurys = jurys.substring(0, jurys.length() - 1) ; 
+		this.jurys = new JLabel(jurys) ; 
+		
+		this.classroom = new JLabel("Salle de soutenance : " + event.getClassroom().getClassRoomNumber() + ", ") ; 
+		
+		String documents = "Documents : " ; 
+		for (Document document : event.getDocuments())
+			documents += document.getDocumentURI() + " " ; 
+		documents = documents.substring(0, documents.length() - 1) ; 
+		this.documents = new JLabel(documents) ; 
+		
+		this.setLayout(new GridLayout(5,1)) ; 
+		this.add(this.date) ; 
+		this.add(this.student) ; 
+		this.add(this.jurys) ; 
+		this.add(this.classroom) ; 
+		this.add(this.documents) ; 
+		
+		JFrame soutenance = new JFrame("Détail soutenance") ; 
+		soutenance.add(this) ; 
+		soutenance.pack() ; 
+		soutenance.setVisible(true) ; 
+	}
+	
+}

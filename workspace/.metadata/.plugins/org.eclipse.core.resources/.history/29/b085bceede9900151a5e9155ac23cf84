@@ -1,0 +1,38 @@
+package edu.iut.gui.widget.agenda;
+
+import java.util.ArrayList;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import edu.iut.app.ExamEvent;
+import edu.iut.app.Person;
+import edu.iut.app.Document;
+
+public class ExamEventPanel extends JPanel {
+	
+	
+	private JLabel date ; 
+	private JLabel student ; 
+	private JLabel jurys ; 
+	private JLabel classroom ; 
+	private JLabel documents ; 
+	
+	private ExamEventPanel(ExamEvent event) {
+		this.date = new JLabel(event.getExamDate().toString()) ; 
+		this.student = new JLabel(event.getStudent().getFirstname() + " " + event.getStudent().getLastname()) ;
+		
+		String jurys = "" ; 
+		for (Person jury : event.getJury())
+			jurys += jury.getFirstname() + " " + jury.getLastname() + ", " ; 
+		this.jurys = new JLabel(jurys) ; 
+		
+		this.classroom = new JLabel(event.getClassroom().getClassRoomNumber()) ; 
+		
+		String documents = "" ; 
+		for (Document document : event.getDocuments())
+			documents += document.getDocumentURI() + " " ; 
+		this.documents = new JLabel(documents) ; 
+	}
+	
+}
