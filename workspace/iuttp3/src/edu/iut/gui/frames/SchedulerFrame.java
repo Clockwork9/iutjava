@@ -73,7 +73,7 @@ public class SchedulerFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				JOptionPane.showMessageDialog(null, "Not yet implemented", "info", JOptionPane.INFORMATION_MESSAGE, null);	
+				JOptionPane.showMessageDialog(null, ApplicationSession.instance().getString("info"), "info", JOptionPane.INFORMATION_MESSAGE, null);	
 			}
 			
 		}
