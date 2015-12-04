@@ -11,6 +11,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -66,6 +67,16 @@ public class SchedulerFrame extends JFrame {
 		
 		/* File Menu */
 		/** EX4 : MENU : UTILISER L'AIDE FOURNIE DANS LE TP**/
+		//Classe pour les listener des parties non implémentés
+		class MsgError implements ActionListener {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JOptionPane.showMessageDialog(null, "Not yet implemented", "info", JOptionPane.INFORMATION_MESSAGE, null);	
+			}
+			
+		}
 		
 	//Menu File	
 		file = new JMenu("File");
@@ -82,6 +93,7 @@ public class SchedulerFrame extends JFrame {
 		load.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
 		load.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		file.add(load);
+		load.addActionListener(new MsgError());
 		
 		quit = new JMenuItem("quit",KeyEvent.VK_T);
 		quit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
@@ -109,6 +121,7 @@ public class SchedulerFrame extends JFrame {
 		save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
 		save.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		file.add(save);
+		save.addActionListener(new MsgError());
 		
 		
 	//Menu Edit 
@@ -143,16 +156,7 @@ public class SchedulerFrame extends JFrame {
 		view.add(day);
 		
 		//LISTENER VIEW
-		/**class SwitchView implements ActionListener {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				layerLayout.last(contentPane);	
-				
-			}
-			
-		}*/
+		
 		
 		month.addActionListener(new ActionListener() {
 			
@@ -203,43 +207,15 @@ public class SchedulerFrame extends JFrame {
 		display.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
 		display.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		help.add(display);
+		display.addActionListener(new MsgError());
 		
 		about = new JMenuItem("About",KeyEvent.VK_T);
 		about.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
 		about.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		help.add(about);
+		about.addActionListener(new MsgError());
 		
 		
-
-	/*	menuItem.setMnemonic(KeyEvent.VK_B);
-		edit.add(menuItem);
-
-		menuItem.setMnemonic(KeyEvent.VK_D);
-		edit.add(menuItem);*/
-
-		
-		
-		
-		//a submenu
-		/*menu.addSeparator();
-		submenu = new JMenu("A submenu");
-		submenu.setMnemonic(KeyEvent.VK_S);
-
-		menuItem = new JMenuItem("An item in the submenu");
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(
-		        KeyEvent.VK_2, ActionEvent.ALT_MASK));
-		submenu.add(menuItem);
-
-		menuItem = new JMenuItem("Another item");
-		submenu.add(menuItem);
-		menu.add(submenu);
-
-		//Build second menu in the menu bar.
-		menu = new JMenu("Another Menu");
-		menu.setMnemonic(KeyEvent.VK_N);
-		menu.getAccessibleContext().setAccessibleDescription(
-		        "This menu does nothing");
-		menuBar.add(menu);*/
 
 		this.setJMenuBar(menuBar);
 		this.pack();
