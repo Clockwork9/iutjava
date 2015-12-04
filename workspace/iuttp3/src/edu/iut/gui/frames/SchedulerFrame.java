@@ -79,7 +79,7 @@ public class SchedulerFrame extends JFrame {
 		}
 		
 	//Menu File	
-		file = new JMenu("File");
+		file = new JMenu(ApplicationSession.instance().getString("file"));
 		
 		menuBar.add(file);
 		file.setMnemonic(KeyEvent.VK_A);
@@ -89,13 +89,13 @@ public class SchedulerFrame extends JFrame {
 		
 
 		//a group of JMenuItems
-		load = new JMenuItem("Load",KeyEvent.VK_T);
+		load = new JMenuItem(ApplicationSession.instance().getString("load"),KeyEvent.VK_T);
 		load.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
 		load.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		file.add(load);
 		load.addActionListener(new MsgError());
 		
-		quit = new JMenuItem("quit",KeyEvent.VK_T);
+		quit = new JMenuItem(ApplicationSession.instance().getString("quit"),KeyEvent.VK_T);
 		quit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
 		quit.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		file.add(quit);
@@ -109,7 +109,7 @@ public class SchedulerFrame extends JFrame {
 				
 				//message box yes/no pour le bouton quitter
 				int dialogButton = JOptionPane.YES_NO_OPTION;
-				int dialogResult = JOptionPane.showConfirmDialog (null, "Voulez-vous quitter?","Warning",dialogButton);
+				int dialogResult = JOptionPane.showConfirmDialog (null, new String(ApplicationSession.instance().getString("quit?")),"Warning",dialogButton);
 				if(dialogResult == JOptionPane.YES_OPTION){
 				System.exit(0);
 				}
@@ -117,7 +117,7 @@ public class SchedulerFrame extends JFrame {
 			
 		});
 		
-		save = new JMenuItem("Save",KeyEvent.VK_T);
+		save = new JMenuItem(new String(ApplicationSession.instance().getString("save")),KeyEvent.VK_T);
 		save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
 		save.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		file.add(save);
@@ -125,7 +125,7 @@ public class SchedulerFrame extends JFrame {
 		
 		
 	//Menu Edit 
-		edit = new JMenu("Edit");
+		edit = new JMenu(new String(ApplicationSession.instance().getString("edit")));
 		
 		menuBar.add(edit);
 		edit.setMnemonic(KeyEvent.VK_A);
@@ -134,23 +134,23 @@ public class SchedulerFrame extends JFrame {
 		
 		//Sous menu View
 		
-		view = new JMenu("View");
+		view = new JMenu(new String(ApplicationSession.instance().getString("view")));
 		view.setMnemonic(KeyEvent.VK_A);
 		view.getAccessibleContext().setAccessibleDescription(
 		        "The only menu in this program that has menu items");
 		edit.add(view);
 		
-		month = new JMenuItem("Month",KeyEvent.VK_T);
+		month = new JMenuItem(new String(ApplicationSession.instance().getString("month")),KeyEvent.VK_T);
 		month.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
 		month.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		view.add(month);
 				
-		week = new JMenuItem("Week",KeyEvent.VK_T);
+		week = new JMenuItem(new String(ApplicationSession.instance().getString("week")),KeyEvent.VK_T);
 		week.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
 		week.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		view.add(week);
 		
-		day = new JMenuItem("Day",KeyEvent.VK_T);
+		day = new JMenuItem(new String(ApplicationSession.instance().getString("day")),KeyEvent.VK_T);
 		day.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
 		day.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		view.add(day);
@@ -195,7 +195,7 @@ public class SchedulerFrame extends JFrame {
 		
 		
 	//Menu Help
-		help = new JMenu("Help");
+		help = new JMenu(new String(ApplicationSession.instance().getString("help")));
 		
 		menuBar.add(help);
 		help.setMnemonic(KeyEvent.VK_A);
@@ -203,13 +203,13 @@ public class SchedulerFrame extends JFrame {
 		        "The only menu in this program that has menu items");
 		menuBar.add(help);
 		
-		display = new JMenuItem("Display",KeyEvent.VK_T);
+		display = new JMenuItem(new String(ApplicationSession.instance().getString("display")),KeyEvent.VK_T);
 		display.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
 		display.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		help.add(display);
 		display.addActionListener(new MsgError());
 		
-		about = new JMenuItem("About",KeyEvent.VK_T);
+		about = new JMenuItem(new String(ApplicationSession.instance().getString("about")),KeyEvent.VK_T);
 		about.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
 		about.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		help.add(about);
