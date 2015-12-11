@@ -1,0 +1,39 @@
+package edu.iut.io;
+
+import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import edu.iut.app.ExamEvent;
+
+//EX 1 Completer la classe 
+
+public class XMLProjectWriter {
+	
+	public XMLProjectWriter() {}
+	
+	public void save(ArrayList<ExamEvent> data, java.io.File xmlfile) {
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance() ; 
+		DocumentBuilder builder = factory.newDocumentBuilder() ; 
+		Document document = builder.newDocument() ; 
+		Element root = document.createElement("agenda") ; 
+		root.appendChild(comment) ; 
+		
+		for (intevent_i=0 ; event_i<5 ; event_i++) {
+			Element event = document.createElement("event") ; 
+			event.setAttribute("public","yes") ; 
+			event.setAttribute("id","" + event_i) ; 
+			event.setAttribute("date","2016-06-23 "+ (14 + event_i) + ":00") ; 
+			event.setAttribute("duration","02:00:00") ; 
+			Element eventTitle=document.createElement("title") ; 
+			eventTitle.appendChild(document.createTextNode("Train defense"+event_i)) ; 
+			Element eventRoom=document.createElement("room") ; 
+			eventRoom.setAttribute("number","i107") ; 
+			event.appendChild(eventTitle) ; 
+			event.appendChild(eventRoom) ; 
+			root.appendChild(event) ; 
+		}
+		
+		document.appendChild(root);
+	}
+}

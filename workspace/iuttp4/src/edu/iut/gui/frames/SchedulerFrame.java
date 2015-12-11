@@ -7,11 +7,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -20,20 +22,17 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
-//import javax.swing.text.Document;
+import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
-import edu.iut.gui.listeners.*;
+import edu.iut.app.ExamEvent;
+import edu.iut.app.XMLFilter;
 import edu.iut.gui.widget.agenda.AgendaPanelFactory;
 import edu.iut.gui.widget.agenda.ControlAgendaViewPanel;
 import edu.iut.gui.widget.agenda.AgendaPanelFactory.ActiveView;
+import edu.iut.io.XMLProjectReader;
+import edu.iut.io.XMLProjectWriter;
 
 
 public class SchedulerFrame extends JFrame {
@@ -72,16 +71,30 @@ public class SchedulerFrame extends JFrame {
 		menuItem = new JMenuItem("Load");
 		menuItem.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				//JOptionPane.showMessageDialog(null, "Not yet implemented", "info", JOptionPane.INFORMATION_MESSAGE, null);		
-				JFileChooser test = new JFileChooser() ; 
-				int retour=test.showOpenDialog(new JLabel("Load"));
+			public void actionPerformed(ActionEvent arg0) {		
+				JFileChooser loadFile = new JFileChooser() ; 
+				loadFile.addChoosableFileFilter(new XMLFilter()) ; 
+				int retour = loadFile.showOpenDialog((JMenuItem) arg0.getSource()) ; 
 				if(retour==JFileChooser.APPROVE_OPTION){
 				   // un fichier a été choisi (sortie par OK)
-				   // nom du fichier  choisi 
-					String nomFichier = test.getSelectedFile().getName();
 				   // chemin absolu du fichier choisi
-					String cheminFichier = test.getSelectedFile().getAbsolutePath();
+					String cheminFichier = loadFile.getSelectedFile().getAbsolutePath() ; 
+					
+					XMLProjectReader load = new XMLProjectReader() ; 
+					/*int ouvrir = load.showSaveDialog((JMenuItem) arg0.getSource());
+					if(retour == JFileChooser.APPROVE_OPTION){
+					   // un fichier a été choisi (sortie par OK)
+					   // chemin absolu du fichier choisi
+						String cheminFichierOuvrir = saveFile.getSelectedFile().getAbsolutePath() ; 
+						
+						XMLProjectWriter saveXml = new XMLProjectWriter() ; 
+						saveXml.save(new ArrayList<ExamEvent>(), new File(cheminFichier)) ; 
+					}*/
+					try {
+						load.load(new File(cheminFichier)) ;
+					} catch (IOException e) {
+						e.printStackTrace();
+					} 
 				}
 			}			
 		});
@@ -92,44 +105,18 @@ public class SchedulerFrame extends JFrame {
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//JOptionPane.showMessageDialog(null, "Not yet implemented", "info", JOptionPane.INFORMATION_MESSAGE, null);
-				JFileChooser test = new JFileChooser() ; 
-				int retour=test.showSaveDialog(new JLabel("Save"));
-				if(retour==JFileChooser.APPROVE_OPTION){
+				JFileChooser saveFile = new JFileChooser() ; 
+				saveFile.addChoosableFileFilter(new XMLFilter()) ; 
+				int retour = saveFile.showSaveDialog((JMenuItem) arg0.getSource());
+				if(retour == JFileChooser.APPROVE_OPTION){
 				   // un fichier a été choisi (sortie par OK)
-				   // nom du fichier  choisi 
-					String nomFichier = test.getSelectedFile().getName();
 				   // chemin absolu du fichier choisi
-					String cheminfichier = test.getSelectedFile().getAbsolutePath();
-				
-				
-				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance()  ; 
-				try {
-					DocumentBuilder builder = factory.newDocumentBuilder();
-					Document document= builder.newDocument();
-					Element root = document.createElement(nomFichier);
-					//root.appendChild(comment);
-					for (int event_i = 0;event_i<5;event_i++) {
-					Element event = document.createElement("event");
-					event.setAttribute("public", "yes");
-					event.setAttribute("id", ""+event_i);
-					event.setAttribute("date", "2016-06-23 "+(14+event_i)+":00");
-					event.setAttribute("duration", "02:00:00");
-					Element eventTitle = document.createElement("title");
-					eventTitle.appendChild(document.createTextNode("Train defense " + event_i));
-					Element eventRoom = document.createElement("room");
-					eventRoom.setAttribute("number", "i107");
-					event.appendChild(eventTitle);
-					event.appendChild(eventRoom);
-					root.appendChild(event);
-					}
-					document.appendChild(root);
-				} catch (ParserConfigurationException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					String cheminFichier = saveFile.getSelectedFile().getAbsolutePath() ; 
+					
+					XMLProjectWriter saveXml = new XMLProjectWriter() ; 
+					saveXml.save(new ArrayList<ExamEvent>(), new File(cheminFichier)) ; 
 				}
-				}
-			}			
+			}
 		});
 		menu.add(menuItem);
 		
