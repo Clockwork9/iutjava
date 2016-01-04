@@ -5,11 +5,11 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="Z:\Desktop\S3\projetgit"/>
 			<item value="C:\Users\Pascal\Desktop\CPOB\Workspace\TP2"/>
 			<item value="C:\Users\Pascal\Desktop\CPOB"/>
 			<item value="C:\Users\Pascal\Desktop\iutjava\workspace\iuttp2"/>
 			<item value="Z:\iutjava\workspace"/>
-			<item value="C:\Users\Pascal\Desktop\iutjava\workspace"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>

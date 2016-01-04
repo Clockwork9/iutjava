@@ -73,7 +73,7 @@ public class SchedulerFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {		
 				JFileChooser loadFile = new JFileChooser() ; 
-				loadFile.addChoosableFileFilter(new XMLFilter()) ; 
+				loadFile.setFileFilter(new XMLFilter()) ; 
 				int retour = loadFile.showOpenDialog((JMenuItem) arg0.getSource()) ; 
 				if(retour==JFileChooser.APPROVE_OPTION){
 				   // un fichier a été choisi (sortie par OK)
@@ -106,12 +106,16 @@ public class SchedulerFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser saveFile = new JFileChooser() ; 
-				saveFile.addChoosableFileFilter(new XMLFilter()) ; 
+				saveFile.setFileFilter(new XMLFilter()) ; 
 				int retour = saveFile.showSaveDialog((JMenuItem) arg0.getSource());
 				if(retour == JFileChooser.APPROVE_OPTION){
-				   // un fichier a été choisi (sortie par OK)
-				   // chemin absolu du fichier choisi
+					// un fichier a été choisi (sortie par OK)
+					// chemin absolu du fichier choisi
 					String cheminFichier = saveFile.getSelectedFile().getAbsolutePath() ; 
+					
+					// Rajouter l'extension .xml si manquant
+					if (!cheminFichier.substring(cheminFichier.length()-4).equals(new String(".xml")))
+						cheminFichier += ".xml" ; 
 					
 					XMLProjectWriter saveXml = new XMLProjectWriter() ; 
 					saveXml.save(new ArrayList<ExamEvent>(), new File(cheminFichier)) ; 

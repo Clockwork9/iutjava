@@ -39,6 +39,7 @@ public class XMLProjectReader {
 						NamedNodeMap attributes = child.getAttributes() ; 
 						for (int att_i=0 ; att_i<attributes.getLength() ; att_i++) {
 							Attr attribute = (Attr)attributes.item(att_i) ; 
+							System.err.println(attribute.getTextContent()) ; 
 						}
 					}
 					NodeList titles = ((Element)child).getElementsByTagName("title") ; 
@@ -46,6 +47,7 @@ public class XMLProjectReader {
 					for (int si = 0 ; si<titles.getLength() ; si++) {
 						Node subNode=titles.item(si) ; 
 						Element titleElement = (Element)subNode ; 
+						
 					}
 				}
 			}
