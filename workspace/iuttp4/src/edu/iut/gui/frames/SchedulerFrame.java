@@ -10,6 +10,7 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
@@ -26,8 +27,11 @@ import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 
+import edu.iut.app.ApplicationSession;
 import edu.iut.app.ExamEvent;
+import edu.iut.app.Person;
 import edu.iut.app.XMLFilter;
+import edu.iut.gui.widget.agenda.AddPersonPanel;
 import edu.iut.gui.widget.agenda.AgendaPanelFactory;
 import edu.iut.gui.widget.agenda.ControlAgendaViewPanel;
 import edu.iut.gui.widget.agenda.AgendaPanelFactory.ActiveView;
@@ -36,6 +40,7 @@ import edu.iut.io.XMLProjectWriter;
 
 
 public class SchedulerFrame extends JFrame {
+	public static ArrayList<Person> personnes = new ArrayList<Person>() ; 
 	JPanel contentPane;
 	CardLayout layerLayout;
 	AgendaPanelFactory agendaPanelFactory;	
@@ -66,9 +71,9 @@ public class SchedulerFrame extends JFrame {
 		JMenuItem menuItem;
 		
 		/* File Menu */
-		menu = new JMenu("File");
+		menu = new JMenu(ApplicationSession.instance().getString("file"));
 		
-		menuItem = new JMenuItem("Load");
+		menuItem = new JMenuItem(ApplicationSession.instance().getString("load"));
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {		
@@ -101,7 +106,7 @@ public class SchedulerFrame extends JFrame {
 		menu.add(menuItem);
 		
 		//SAVE
-		menuItem = new JMenuItem("Save");
+		menuItem = new JMenuItem(ApplicationSession.instance().getString("save"));
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -124,14 +129,14 @@ public class SchedulerFrame extends JFrame {
 		});
 		menu.add(menuItem);
 		
-		menuItem = new JMenuItem("Quit");
+		menuItem = new JMenuItem(ApplicationSession.instance().getString("quit"));
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 					
 				//message box yes/no pour le bouton quitter
 				int dialogButton = JOptionPane.YES_NO_OPTION;
-				int dialogResult = JOptionPane.showConfirmDialog (null, "Voulez-vous quitter?","Warning",dialogButton);
+				int dialogResult = JOptionPane.showConfirmDialog (null, ApplicationSession.instance().getString("quitMsg"),"Warning",dialogButton);
 				if(dialogResult == JOptionPane.YES_OPTION){
 				System.exit(0);
 				}
@@ -142,9 +147,9 @@ public class SchedulerFrame extends JFrame {
 		menuBar.add(menu);
 		
 		/* Edit Menu */
-		menu = new JMenu("Edit");
-		JMenu submenu = new JMenu("View");
-		menuItem = new JMenuItem("Day");
+		menu = new JMenu(ApplicationSession.instance().getString("edit"));
+		JMenu submenu = new JMenu(ApplicationSession.instance().getString("view"));
+		menuItem = new JMenuItem(ApplicationSession.instance().getString("day"));
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -152,7 +157,7 @@ public class SchedulerFrame extends JFrame {
 			}			
 		});		
 		submenu.add(menuItem);
-		menuItem = new JMenuItem("Week");
+		menuItem = new JMenuItem(ApplicationSession.instance().getString("week"));
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -160,7 +165,7 @@ public class SchedulerFrame extends JFrame {
 			}			
 		});		
 		submenu.add(menuItem);
-		menuItem = new JMenuItem("Month");
+		menuItem = new JMenuItem(ApplicationSession.instance().getString("month"));
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -171,9 +176,24 @@ public class SchedulerFrame extends JFrame {
 		menu.add(submenu);
 		menuBar.add(menu);
 		
+		menuItem = new JMenuItem(ApplicationSession.instance().getString("addPerson")) ; 
+		menuItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFrame addPerson =  new JFrame(ApplicationSession.instance().getString("addPerson")) ; 
+				
+				addPerson.add(new AddPersonPanel()) ; 
+				addPerson.setVisible(true) ; 
+				addPerson.pack() ; 
+			}
+			
+		}) ; 
+		menu.add(menuItem) ; 
+		
 		/* Help Menu */
-		menu = new JMenu("Help");
-		menuItem = new JMenuItem("Display");
+		menu = new JMenu(ApplicationSession.instance().getString("help"));
+		menuItem = new JMenuItem(ApplicationSession.instance().getString("display"));
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -235,7 +255,7 @@ public class SchedulerFrame extends JFrame {
 				  }
 		});
 		menu.add(menuItem);
-		menuItem = new JMenuItem("About");
+		menuItem = new JMenuItem(ApplicationSession.instance().getString("about"));
 		//Ajout du code pour la fenetre HTML de "About"
 		menuItem.addActionListener(new ActionListener() {
 			@Override

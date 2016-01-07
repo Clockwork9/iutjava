@@ -10,21 +10,27 @@ import javax.swing.SwingUtilities;
 
 public class IUTScheduler {
 	public static void main(String[] args) {
-		Locale.setDefault(Locale.FRANCE);
+		String locale = "us" ; 
+		Locale.setDefault(Locale.US) ; 
+		if (args.length > 0)
+			if (args[0] == "fr") {
+				locale = "fr" ; 
+				Locale.setDefault(Locale.FRANCE) ; 
+			}
 		
 		
 		
 		CommandLineParser commandLineParser = new CommandLineParser();
 		CommandLineOption<java.io.File> configOption = new CommandLineOption<java.io.File>(CommandLineOption.OptionType.FILE, 
 				                                                                           "config","configuration file",
-				                                                                           new java.io.File("/tmp"));
+				                                                                           new java.io.File("-config=<FILE>"));
 		CommandLineOption<String> localeOption = new CommandLineOption<String>(CommandLineOption.OptionType.STRING, 
 																			   "locale","en|fr",
-																			   new String("fr"));
+																			   new String(locale));
 
 		CommandLineOption<java.io.File> projectOption = new CommandLineOption<java.io.File>(CommandLineOption.OptionType.FILE, 
 				   																			"project file","xml project file",
-				   																		    new java.io.File("/tmp"));
+				   																		    new java.io.File("-project=<FILE>"));
 		
 		commandLineParser.addOption(configOption);
 		commandLineParser.addOption(localeOption);
@@ -34,8 +40,10 @@ public class IUTScheduler {
 		commandLineParser.parse(args);
 		
 		
-		
+
 		System.err.println("Option:"+commandLineParser.getOption("config").getValue());
+		System.err.println("Option:"+commandLineParser.getOption("locale").getValue());
+		System.err.println("Option:"+commandLineParser.getOption("project file").getValue());
 		SwingUtilities.invokeLater(new Runnable() {
 		    public void run() {
 		        JFrame mainFrame = new edu.iut.gui.frames.SchedulerFrame("IUT Scheduler");

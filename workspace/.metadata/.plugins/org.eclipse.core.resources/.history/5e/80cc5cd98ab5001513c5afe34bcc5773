@@ -1,0 +1,53 @@
+# GUI properties
+january=january
+february=february
+march=march
+april=april
+may=may
+june=june
+july=july
+august=august
+september=september
+october=october
+november=november
+december=december
+monday=Monday
+tuesday=Tuesday
+wednesday=Wednesday
+thursday=Thursday
+friday=Friday
+saturday=Saturday
+sunday=Sunday
+mon=Mon
+tue=Tue
+wed=Wed
+thu=Thu
+fri=Fri
+sat=Sat
+sun=Sun
+next=Next
+
+quitMsg=Do you want to quit?
+
+file=File
+load=Load
+save=Save
+quit=Quit
+edit=Edit
+view=View
+day=Day
+week=Week
+month=Month
+help=Help
+display=Display
+about=About
+
+personfunction=Person function : 
+firstname=First name : 
+lastname=Last name : 
+email=E-mail : 
+phone=Phone number : 
+student=Student
+add=Add
+cancel=Cancel
+created=A person has been successfully created

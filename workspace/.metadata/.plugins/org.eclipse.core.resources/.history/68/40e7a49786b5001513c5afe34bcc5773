@@ -1,0 +1,69 @@
+package edu.iut.gui.widget.agenda;
+
+import java.awt.GridLayout;
+
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import edu.iut.app.ApplicationSession;
+import edu.iut.app.Person;
+import edu.iut.app.Person.PersonFunction;
+
+public class AddPersonPanel extends JPanel {
+	
+	//LABELS
+	private JLabel lPersonFunction = new JLabel(ApplicationSession.instance().getString("personfunction")) ; 
+	private JLabel lFirstname = new JLabel(ApplicationSession.instance().getString("firstname")) ; 
+	private JLabel lLastname = new JLabel(ApplicationSession.instance().getString("lastname")) ; 
+	private JLabel lEmail = new JLabel(ApplicationSession.instance().getString("email")) ; 
+	private JLabel lPhone = new JLabel(ApplicationSession.instance().getString("phone")) ; 
+	
+	//TEXTFIELDS
+	private JComboBox<PersonFunction> personFunction ; 
+	private JTextField tfFirstname ; 
+	private JTextField tfLastname ; 
+	private JTextField tfEmail ; 
+	private JTextField tfPhone ;
+	
+	//PANELS
+	private JPanel pnlPersonFunction ; 
+	private JPanel pnlFirstname ; 
+	private JPanel pnlLastname ; 
+	private JPanel pnlEmail ; 
+	private JPanel pnlPhone ; 
+	
+	public AddPersonPanel() {
+		super() ; 
+		
+		pnlPersonFunction = new JPanel() ; 
+		personFunction.addItem(PersonFunction.STUDENT) ; 
+		personFunction.addItem(PersonFunction.JURY) ; 
+		pnlPersonFunction.add(personFunction) ; 
+		this.add(pnlPersonFunction) ; 
+		
+		pnlFirstname = new JPanel() ; 
+		pnlFirstname.add(lFirstname) ; 
+		pnlFirstname.add(tfFirstname) ; 
+		this.add(pnlFirstname) ; 
+		
+		pnlLastname = new JPanel() ; 
+		pnlLastname.add(lLastname) ; 
+		pnlLastname.add(tfLastname) ; 
+		this.add(pnlLastname) ; 
+		
+		pnlEmail = new JPanel() ; 
+		pnlEmail.add(lEmail) ; 
+		pnlEmail.add(tfEmail) ; 
+		this.add(pnlEmail) ; 
+		
+		pnlPhone = new JPanel() ; 
+		pnlPhone.add(lPhone) ; 
+		pnlPhone.add(tfPhone) ; 
+		this.add(pnlPhone) ; 
+		
+		this.setLayout(new GridLayout(5,1)) ; 
+	}
+	
+}

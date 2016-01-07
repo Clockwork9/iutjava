@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<agenda>
+  <!--Commentaire-->
+  <event date="2016-06-23 14:00" duration="02:00:00" id="0" public="yes">
+    <title>Train defense0</title>
+    <room number="i107"/>
+  </event>
+  <event date="2016-06-23 15:00" duration="02:00:00" id="1" public="yes">
+    <title>Train defense1</title>
+    <room number="i107"/>
+  </event>
+  <event date="2016-06-23 16:00" duration="02:00:00" id="2" public="yes">
+    <title>Train defense2</title>
+    <room number="i107"/>
+  </event>
+  <event date="2016-06-23 17:00" duration="02:00:00" id="3" public="yes">
+    <title>Train defense3</title>
+    <room number="i107"/>
+  </event>
+  <event date="2016-06-23 18:00" duration="02:00:00" id="4" public="yes">
+    <title>Train defense4</title>
+    <room number="i107"/>
+  </event>
+</agenda>

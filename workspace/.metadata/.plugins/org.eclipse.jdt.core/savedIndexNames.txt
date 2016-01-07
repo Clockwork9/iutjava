@@ -1,3 +1,1 @@
-INDEX VERSION 1.127+Z:\iutjava\workspace\.metadata\.plugins\org.eclipse.jdt.core
-3741194132.index
-1124997020.index
+INDEX VERSION 1.127+C:\Users\Pascal\Desktop\iutjava\workspace\.metadata\.plugins\org.eclipse.jdt.core

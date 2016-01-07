@@ -1,0 +1,27 @@
+package edu.iut.gui.widget.agenda;
+
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import edu.iut.app.ApplicationSession;
+import edu.iut.app.Person;
+import edu.iut.app.Person.PersonFunction;
+
+public class AddPersonPanel extends JPanel {
+	
+	//LABELS
+	private JComboBox personFunction ; 
+	private JLabel lFirstname = new JLabel(ApplicationSession.instance().getString("firstname")) ; 
+	private JLabel lLastname = new JLabel(ApplicationSession.instance().getString("lastname")) ; 
+	private JLabel lEmail = new JLabel(ApplicationSession.instance().getString("email")) ; 
+	private JLabel lPhone = new JLabel(ApplicationSession.instance().getString("phone")) ; 
+	
+	//TEXTFIELD
+	private JTextField tfFirstname ; 
+	private JTextField tfLastname ; 
+	private JTextField tfEmail ; 
+	private JTextField tfPhone ; 
+	
+}
